@@ -15,6 +15,15 @@ public class ContaCorrente {
     private double saldo;
     private double deposito;
     private double saque;
+    private int opcao;
+
+    public int getOpcao() {
+        return opcao;
+    }
+
+    public void setOpcao(int opcao) {
+        this.opcao = opcao;
+    }
 
     Scanner scanner = new Scanner(System.in);
 
@@ -63,6 +72,31 @@ public class ContaCorrente {
     public void VerificarSaldo() {
         System.out.println("Saldo atual: R$" + saldo);
     }
-}
 
+    public void Operacao() {
+        System.out.println("Selecione uma operação");
+        opcao = scanner.nextInt();
+    }
+
+    public void Menu() {
+        Operacao();
+        while (opcao != 0) {
+            switch (opcao) {
+                case 1:
+                    Depositar();
+                    Operacao();
+                    break;
+                case 2:
+                    Sacar();
+                    Operacao();
+                    break;
+                case 3:
+                    VerificarSaldo();
+                    Operacao();
+                case 0:
+                    System.out.println("Programa Encerrado...");
+                    break;
+            }
+        }
+    }
 }
